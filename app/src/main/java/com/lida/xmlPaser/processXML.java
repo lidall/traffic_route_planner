@@ -26,7 +26,6 @@ public class processXML {
         for (String content : arrOfxml){
             if (content.contains("Leg") && !content.contains("/leg")) {
                 String sub_content = content.replace("<","").replace(">", "");
-                //System.out.println(sub_content);
 
                 if (sub_content.contains("type=\"WALK\"")){
                     Leg_list.add("<b><font size=18 color=cc0029>Walk");
@@ -50,7 +49,6 @@ public class processXML {
 
             if (content.contains("Origin") && !content.contains("/Origin")) {
                 String sub_content = content.replace("<","").replace(">", "");
-                //System.out.println(sub_content);
 
                 if (sub_content.contains("type=\"ST\"")) {
                     if (sub_content.contains("routeIdx=")){
@@ -108,18 +106,12 @@ public class processXML {
                     Time_list.add(String.valueOf(time_min));
                 }
 
-
             }
-
-
 
             if (content.contains("/Trip")){
                 break;
             }
         }
-
-
-
 
     }
 
