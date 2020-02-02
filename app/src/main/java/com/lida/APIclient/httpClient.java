@@ -25,11 +25,6 @@ public class httpClient {
 
             URL url = new URL(requestUrl);
             HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
-            //urlConn.setConnectTimeout(5 * 1000);
-            //urlConn.setReadTimeout(5 * 1000);
-            ///urlConn.setUseCaches(true);
-            //urlConn.setRequestMethod("GET");
-            //urlConn.setRequestProperty("Content-Type", "application/json");
             urlConn.addRequestProperty("Authorization", "Bearer " + MainActivity.token);
 
             urlConn.connect();
@@ -53,18 +48,13 @@ public class httpClient {
             System.out.println("No Result");
         }
 
-        //System.out.println(result);
+        //Log.d("Result",result);
 
         return result;
     }
 
     public static String convertStreamToString(InputStream is) {
-        /*
-         * To convert the InputStream to String we use the BufferedReader.readLine()
-         * method. We iterate until the BufferedReader return null which means
-         * there's no more data to read. Each line will appended to a StringBuilder
-         * and returned as String.
-         */
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
 
@@ -98,7 +88,6 @@ public class httpClient {
             data.append("grant_type=client_credentials");
             byte[] byteArray = data.toString().getBytes("UTF-8");
             URL url = new URL("https://api.vasttrafik.se:443/token");
-            //curl -k -d "grant_type=client_credentials" -H "Authorization: Basic dnlhTXJKeXJEZTZsc01mclc1NW83QXpxSDJVYTpSNnJCNVh1aGV0YUNTdmREYVJadWFIc2Y1T2Nh" https://api.vasttrafik.se:443/token
             HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
             con.setRequestMethod("POST");
             con.setConnectTimeout(5000);
@@ -108,13 +97,12 @@ public class httpClient {
             OutputStream postStream = con.getOutputStream();
             postStream.write(byteArray, 0, byteArray.length);
             postStream.close();
-//      curl -k -d "grant_type=client_credentials" -H "Authorization: Basic WFFWWFh5dElKeHBvcGxBd3JieGFNTEZzUDQ4YTppWWZpakJTbEJJUkpGQ2Z2NndpR2VzNWdpYU1h" https://192.168.15.82:8243/token
             InputStreamReader reader = new InputStreamReader(con.getInputStream());
             BufferedReader in = new BufferedReader(reader);
             String json = in.readLine();
 
             MainActivity.token = json.split("\"")[13];
-            //System.out.println("Token get: " + MainActivity.token);
+            //Log.d("Token", "Token get: " + MainActivity.token);
 
 
         }catch (Exception e){

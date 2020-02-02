@@ -100,14 +100,6 @@ public class routeDisplay extends AppCompatActivity implements OnMapReadyCallbac
         super.onLowMemory();
         mapView.onLowMemory();
     }
-/*    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        gmap = googleMap;
-        gmap.setMinZoomPreference(12);
-        LatLng ny = new LatLng(57.690000, 11.972957);
-        gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
-    }*/
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -175,7 +167,7 @@ public class routeDisplay extends AppCompatActivity implements OnMapReadyCallbac
             Log.e(TAG, ex.getLocalizedMessage());
         }
 
-        //System.out.println(path.size());
+        //Log.d("Size Loc", path.size());
 
         //Draw the polyline
         if (path.size() > 0) {
