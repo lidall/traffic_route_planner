@@ -79,8 +79,7 @@ public class httpClient {
 
     public static void keyGet() {
 
-        /* curl -k -d "grant_type=client_credentials" -H "Authorization: Basic dnlhTXJKeXJEZTZsc01
-        mclc1NW83QXpxSDJVYTpSNnJCNVh1aGV0YUNTdmREYVJadWFIc2Y1T2Nh" https://api.vasttrafik.se:443/token
+        /* curl -k -d "grant_type=client_credentials" -H "Authorization: Basic YOUR_API_KEY" https://api.vasttrafik.se:443/token
         */
 
         try {
@@ -93,7 +92,7 @@ public class httpClient {
             con.setConnectTimeout(5000);
             con .setDoOutput(true);
             con.setRequestProperty("Authorization",
-                    "Basic dnlhTXJKeXJEZTZsc01mclc1NW83QXpxSDJVYTpSNnJCNVh1aGV0YUNTdmREYVJadWFIc2Y1T2Nh");
+                    "Basic YOUR_API_KEY");
             OutputStream postStream = con.getOutputStream();
             postStream.write(byteArray, 0, byteArray.length);
             postStream.close();
