@@ -119,7 +119,7 @@ public class routeDisplay extends AppCompatActivity implements OnMapReadyCallbac
 
         //Execute Directions API request
         GeoApiContext context = new GeoApiContext.Builder()
-                .apiKey("AIzaSyCiEEviP2jR8uMl_WsgoJXRU0DKdjFPSSk")
+                .apiKey("YOUR_API_KEY")
                 .build();
         DirectionsApiRequest req = DirectionsApi.getDirections(context, MainActivity.originlat+
                 ","+MainActivity.originlon, MainActivity.dstlat+","+MainActivity.dstlon);
